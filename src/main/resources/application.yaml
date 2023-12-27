@@ -1,0 +1,35 @@
+server:
+  port: 8081
+  compression.enabled: true
+  tomcat:
+    threads.max: 200
+    max-swallow-size: 100KB
+    max-http-form-post-size: 100KB
+    connection-timeout: 5s
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  forward-headers-strategy: native
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:market
+    username: sa
+    password:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  security:
+    jwt:
+      secret: 4f08178c47d6d37a999c358b67d6b41e165fdba5d1dfc101452d56126ccba660039e07bd03aae70f2c1b29d3a1533b85cac468f0f13cfd3a8b7c8a1cd23530fb
+      expiration: 604800000
